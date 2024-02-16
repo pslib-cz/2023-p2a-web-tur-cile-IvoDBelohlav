@@ -1,77 +1,98 @@
-/* Definice vlastních proměnných */
 :root {
-    --text-light: #000000;
+    --text-light: #ffffff;
 }
 
-/* Nastavení písma pro celou stránku */
 html {
     font-family: 'Open Sans', sans-serif;
 }
 
-/* Styl pro hlavičku stránky */
 .page-header {
     text-align: center;
     padding: 1em;
     margin-bottom: 1em;
-    /* Pozadí hlavičky z horní části obrázku "egypt.jpg" */
-    background-image: url('egypt.jpg');
-    background-size: cover; /* Pokrytí celé plochy */
-    background-position: center; /* Umístění na střed */
-    color: var(--text-light); /* Barva textu */
+    background-image: url('../images/egypt.jpg');
+    background-position: top;
+    background-size: cover; 
+    color: var(--text-light); 
 }
-
-/* Styly pro seznam kategorií */
+.page-header h1{
+    color: white;
+}
 .categories {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Šířka sloupce mezi 300px a 1fr */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     padding: 1em;
     gap: 1em;
 }
 
-/* Styly pro jednotlivé položky v seznamu kategorií */
+
 .categories__item {
+    border-radius: 20px;
     position: relative;
-    color: inherit;
+    overflow: hidden;
+    display: inline-block;
+    transition: all 0.5s ease; 
 }
 
-/* Efekt při najetí myší na položku */
 .categories__item:hover {
-    box-shadow: 0 0 8px 2px var(--text-light);
-}
+    transform: scale(1.1); }
 
-/* Styly pro obrázky v položkách */
 .categories__item-image {
-    filter: brightness(0.9) saturate(1) contrast(1);
+    filter: blur(4px) brightness(0.9) saturate(1) contrast(1); 
+    transition: filter 0.3s; 
+    transform: scale(1); 
 }
 
-/* Styly pro popis v položkách */
+.categories__item:hover .categories__item-image {
+    filter: brightness(0.7) saturate(0.5) contrast(1.2) blur(4px); 
+    filter: blur(0);
+
+}
+
 .categories__item-description {
     padding: 1em;
     color: var(--text-light);
+    position: absolute;
+    left: 0;
+    bottom: 0; 
+    opacity: 1;
+    transition: opacity 0.3s; 
 }
 
-/* Globální styly pro obrázky */
+.categories__item:hover .categories__item-description {
+    transition: all 0.5s ease; 
+    transform: translate(-50%, 50%); 
+    opacity: 1; 
+    left: 50%;
+    bottom: 50%; 
+}
+    
+    
 .img-responsive {
     width: 100%;
     display: block;
 }
 
-/* Nulování marginu pro figure a nadpisy */
 figure, h2 {
     margin: 0;
 }
-
-/* Styly pro nadpisy */
+    
 .heading {
-    margin: 0.25em 0;
+     margin: 0.25em 0;
     font-weight: bold;
 }
 
-/* Styly pro nadpis h1 */
 .heading--h1 {
     text-transform: uppercase;
     font-size: 2em;
     color: var(--text-light);
+}.categories__item-image {
+    filter: blur(10px) brightness(0.9) saturate(1) contrast(1); 
+    transition: filter 0.3s; 
+}
+
+.unblur {
+    filter: brightness(1) saturate(1) contrast(1); /
 }
